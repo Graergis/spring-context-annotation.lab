@@ -1,14 +1,15 @@
 package org.shop.api.impl;
 
-import java.util.List;
-
 import org.shop.api.UserService;
 import org.shop.data.User;
 import org.shop.repository.UserRepository;
 
+import java.util.List;
+
 public class UserServiceImpl implements UserService {
 
     private UserRepository repository;
+
 
     /* (non-Javadoc)
      * @see org.shop.api.UserService#registerUser(org.shop.data.User)

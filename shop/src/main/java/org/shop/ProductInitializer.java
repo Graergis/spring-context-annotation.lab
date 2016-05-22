@@ -1,9 +1,9 @@
 package org.shop;
 
 import org.shop.api.ProductService;
-
-import org.shop.common.Products;
 import org.shop.data.Product;
+
+import java.util.Map;
 
 /**
  * The Product Initializer util class.
@@ -13,44 +13,29 @@ public final class ProductInitializer {
     /** The product service. */
     private ProductService productService;
 
+    private final Map<String, String> products;
+
     /**
      * Instantiates a new product initializer.
      *
      * @param productService the product service
+     * @param products
      */
-    public ProductInitializer(ProductService productService) {
+    public ProductInitializer(ProductService productService, Map<String, String> products) {
         super();
         this.productService = productService;
+        this.products = products;
     }
     
     /**
      * Inits the products.
      */
     public void initProducts() {
-        Product product = null;
-        
-        //Samsung Galaxy Tab
-        product = new Product();
-        product.setName(Products.SAMSUNG_GALAXY_TAB);
-        product.setDescription("10.1-Inch, 16GB, Wi-Fi");
-        productService.createProduct(product);
-        
-        //Amazon Kindle Fire
-        product = new Product();
-        product.setName(Products.KINDLE_FIRE);
-        product.setDescription("Wi-Fi, Full Color 7, Multi-Touch Display");
-        productService.createProduct(product);
-        
-        //Amazon Kindle Touch
-        product = new Product();
-        product.setName(Products.KINDLE_TOUCH);
-        product.setDescription("Wi-Fi, 6 E Ink Display");
-        productService.createProduct(product);
-        
-        //Samsung Galaxy Ace
-        product = new Product();
-        product.setName(Products.SAMSUNG_GALAXY_ACE);
-        product.setDescription("Samsung S5830L Galaxy Ace");
-        productService.createProduct(product);
+        for (Map.Entry<String, String> entry : products.entrySet()){
+            Product product = new Product();
+            product.setName(entry.getKey());
+            product.setDescription(entry.getValue());
+            productService.createProduct(product);
+        }
     }
 }

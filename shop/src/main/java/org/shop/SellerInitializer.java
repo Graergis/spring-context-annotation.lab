@@ -1,12 +1,11 @@
 package org.shop;
 
-import java.util.Collections;
+import org.shop.api.SellerService;
+import org.shop.data.Seller;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
-import org.shop.api.SellerService;
-import org.shop.data.Seller;
 
 /**
  * The Seller Initializer util class.
@@ -14,10 +13,15 @@ import org.shop.data.Seller;
 public class SellerInitializer {
 
     /** The seller service. */
-    private SellerService sellerService;
+    private final SellerService sellerService;
     
     /** The seller names. */
-    private Map<Long, String> sellerNames = Collections.emptyMap();
+    private final Map<Long, String> sellerNames;
+
+    public SellerInitializer(SellerService sellerService, Map<Long, String> sellerNames) {
+        this.sellerService = sellerService;
+        this.sellerNames = sellerNames;
+    }
 
     /**
      * Inits the sellers.

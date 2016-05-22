@@ -1,7 +1,5 @@
 package org.shop.api.impl;
 
-import java.util.List;
-
 import org.shop.api.ProductService;
 import org.shop.api.ProposalService;
 import org.shop.api.SellerService;
@@ -11,17 +9,21 @@ import org.shop.data.Seller;
 import org.shop.data.State;
 import org.shop.repository.ProposalRepository;
 
+import java.util.List;
+
 public class ProposalServiceImpl implements ProposalService {
 
     private final ProposalRepository repository;
     
-    private SellerService sellerService;
+    private final SellerService sellerService;
     
-    private ProductService productService;
+    private final ProductService productService;
     
-    public ProposalServiceImpl(ProposalRepository repository) {
+    public ProposalServiceImpl(ProposalRepository repository, SellerService sellerService, ProductService productService) {
         super();
         this.repository = repository;
+        this.sellerService = sellerService;
+        this.productService = productService;
     }
 
     /* (non-Javadoc)

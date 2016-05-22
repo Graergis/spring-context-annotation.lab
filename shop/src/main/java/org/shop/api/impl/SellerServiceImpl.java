@@ -1,14 +1,18 @@
 package org.shop.api.impl;
 
-import java.util.List;
-
 import org.shop.api.SellerService;
 import org.shop.data.Seller;
 import org.shop.repository.SellerRepository;
 
+import java.util.List;
+
 public class SellerServiceImpl implements SellerService {
-    
-    private SellerRepository repository;
+
+    private final SellerRepository repository;
+
+    public SellerServiceImpl(SellerRepository repository) {
+        this.repository = repository;
+    }
 
     /* (non-Javadoc)
      * @see org.shop.api.SellerService#getSellers()
